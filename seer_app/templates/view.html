@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<form method=post action="">
+<table>
+  {% for field in form %}
+    <tr>
+    <td style="width: 195px; text-align: right;"><font color="white" style="width: 300px; font-family: lato; font-size: 15px; text-align: center;">{{ field.label }}</font></td>
+    <td style="width: 100px; font-family: lato; font-size: 15px; text-align: left;">{{ field(size=1) }}</td>
+    {% if field.errors %}
+      <td><ul class=errors>
+      {% for error in field.errors %}
+        <li><font color="red">{{ error }}</font></li>
+      {% endfor %}</ul></td>
+    {% endif %}
+    </tr>
+  {% endfor %}
+</table>
+<p><input style=" border-radius: 20px; border: none; color: #f2e8e8; font-size: 30px; font-family: lato; height: 40px; width: 390px; background-color: #f08b93" type=submit value=CALCULATE> </form></p>
+
+<div style="float: left; border-width:2px; border-style: solid; border-color: green; height: 300px; width: 100px;">
+<p>
+{% if result != None %}
+<img src="{{ result }}" width="500">
+{% endif %}
+</p>
+</div> 
+{% endblock %}
